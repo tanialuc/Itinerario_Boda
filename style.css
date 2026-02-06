@@ -187,7 +187,6 @@ body {
   letter-spacing: 1px;
   margin-bottom: 10px;
   opacity: 0.9;
-  text-transform: lowercase;
   color: var(--color-cafe);
 }
 
@@ -404,5 +403,120 @@ body {
     width: 170px;
     height: 170px;
     padding: 12px;
+  }
+}
+
+/* ============================================
+   ESTILOS PARA EVENTOS DETALLADOS
+   ============================================ */
+
+.evento-detallado {
+  display: flex;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(180, 142, 92, 0.2);
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  margin: 8px 0;
+  padding: 18px 15px;
+  transition: all 0.3s ease;
+  align-items: flex-start;
+}
+
+.evento-detallado:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.evento-detallado:last-child {
+  border-bottom: none;
+}
+
+.hora-contenedor {
+  min-width: 90px;
+  padding-right: 20px;
+  position: relative;
+}
+
+.hora-contenedor::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  height: 90%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--color-dorado), transparent);
+}
+
+.hora {
+  font-weight: 700;
+  color: var(--color-cafe);
+  font-size: clamp(1em, 4vw, 1.15em);
+  display: block;
+  text-align: center;
+  background: rgba(180, 142, 92, 0.1);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(180, 142, 92, 0.2);
+}
+
+.actividad-contenedor {
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.actividad-titulo {
+  font-weight: 600;
+  color: var(--color-cafe);
+  font-size: clamp(1em, 4vw, 1.1em);
+  display: block;
+  margin-bottom: 5px;
+  font-family: 'Playfair Display', serif;
+}
+
+.actividad-descripcion {
+  font-size: clamp(0.9em, 3.5vw, 1em);
+  line-height: 1.5;
+  color: var(--color-texto);
+  opacity: 0.9;
+  display: block;
+}
+
+/* Responsive para eventos detallados */
+@media (max-width: 768px) {
+  .evento-detallado {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .hora-contenedor {
+    min-width: auto;
+    padding-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .hora-contenedor::after {
+    display: none;
+  }
+  
+  .hora {
+    display: inline-block;
+    text-align: left;
+    padding: 8px 15px;
+  }
+  
+  .actividad-contenedor {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .evento-detallado {
+    padding: 12px;
+  }
+  
+  .actividad-descripcion {
+    font-size: 0.95em;
   }
 }
