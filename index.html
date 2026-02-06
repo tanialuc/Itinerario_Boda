@@ -1,383 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itinerario de Boda - Comparte tus fotos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f8f5f2;
-            color: #5a4d41;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .container {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            padding: 30px;
-            margin-top: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Estilo para el encabezado de la boda */
-        .wedding-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e9e1d8;
-        }
-        
-        .wedding-header h1 {
-            color: #b8867e;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-        
-        .wedding-header h2 {
-            color: #8a7166;
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 15px;
-        }
-        
-        /* Estilo para el itinerario */
-        .itinerary {
-            margin-bottom: 40px;
-        }
-        
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-        
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background-color: #e9d7c7;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #e9d7c7;
-        }
-        
-        .timeline-item:last-child {
-            border-bottom: none;
-        }
-        
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            left: -36px;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: #b8867e;
-            border: 3px solid #f8f5f2;
-            box-shadow: 0 0 0 3px #e9d7c7;
-        }
-        
-        .time {
-            font-weight: 600;
-            color: #b8867e;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .event {
-            font-size: 1.05rem;
-            color: #5a4d41;
-        }
-        
-        /* Sección de compartir fotos - VERSIÓN MEJORADA */
-        .photo-share-section {
-            background-color: #fefbf8;
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 30px;
-            border-left: 5px solid #b8867e;
-            box-shadow: 0 4px 12px rgba(184, 134, 126, 0.1);
-        }
-        
-        .photo-share-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            color: #8a7166;
-        }
-        
-        .photo-share-header i {
-            font-size: 1.8rem;
-            margin-right: 15px;
-            color: #b8867e;
-        }
-        
-        .photo-share-header h3 {
-            font-size: 1.6rem;
-            font-weight: 400;
-        }
-        
-        .photo-share-subtitle {
-            font-size: 1.1rem;
-            color: #b8867e;
-            font-style: italic;
-            margin-bottom: 15px;
-            text-align: center;
-            padding: 8px;
-            background-color: rgba(184, 134, 126, 0.08);
-            border-radius: 6px;
-        }
-        
-        .photo-instructions {
-            margin-bottom: 25px;
-            color: #6d6054;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-        
-        .photo-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 25px;
-        }
-        
-        .qr-container {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .qr-title {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #8a7166;
-            font-size: 1.2rem;
-        }
-        
-        .qr-code {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 15px;
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px dashed #d9c7b8;
-        }
-        
-        .qr-code i {
-            font-size: 4rem;
-            color: #b8867e;
-        }
-        
-        .link-container {
-            flex: 1;
-            min-width: 250px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .link-title {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #8a7166;
-            font-size: 1.2rem;
-        }
-        
-        .photo-link {
-            display: block;
-            background-color: #f8f5f2;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-decoration: none;
-            color: #5a4d41;
-            border: 1px solid #e9d7c7;
-            transition: all 0.3s ease;
-            word-break: break-all;
-            text-align: center;
-            font-size: 0.95rem;
-        }
-        
-        .photo-link:hover {
-            background-color: #b8867e;
-            color: white;
-            border-color: #b8867e;
-        }
-        
-        .photo-link i {
-            margin-right: 8px;
-        }
-        
-        .note {
-            background-color: #fff9f5;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 25px;
-            border-left: 4px solid #e9b8a9;
-            font-size: 0.95rem;
-            color: #7d6b5d;
-        }
-        
-        .note strong {
-            color: #b8867e;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .photo-options {
-                flex-direction: column;
-            }
-            
-            .container {
-                padding: 20px;
-            }
-            
-            .wedding-header h1 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            .container {
-                padding: 15px;
-            }
-            
-            .photo-share-section {
-                padding: 20px 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Itinerario Boda - Tania y Manuel</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- 1. PRIMERO la librería QRCode - DEBE ESTAR EN EL HEAD -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="wedding-header">
-            <h1>Tania & Luciano</h1>
-            <h2>¡Celebremos nuestro amor!</h2>
-            <p>15 de Junio, 2024 • Hacienda San José, Valle de Bravo</p>
-        </div>
-        
-        <div class="itinerary">
-            <h2 style="color: #8a7166; margin-bottom: 20px; font-weight: 400; text-align: center;">Itinerario del día</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">3:00 PM</div>
-                    <div class="event">Ceremonia religiosa en la Capilla de la Hacienda</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">4:30 PM</div>
-                    <div class="event">Recepción y cóctel de bienvenida</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">6:00 PM</div>
-                    <div class="event">Brindis y entrada de los novios</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">7:00 PM</div>
-                    <div class="event">Cena y primeros bailes</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">9:00 PM</div>
-                    <div class="event">Pastel y baile</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">12:00 AM</div>
-                    <div class="event">Despedida con luces de bengala</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- SECCIÓN MEJORADA PARA COMPARTIR FOTOS -->
-        <div class="photo-share-section">
-            <div class="photo-share-header">
-                <i class="fas fa-camera-retro"></i>
-                <h3>Comparte tus fotos</h3>
-            </div>
-            
-            <p class="photo-share-subtitle">Hoy todos somos parte de esta historia</p>
-            
-            <div class="photo-instructions">
-                <p>Si capturas algún momento especial, te invitamos a subir tus fotos a nuestro álbum compartido. Queremos guardar recuerdos desde diferentes ángulos y miradas, esos detalles espontáneos que hacen único este día.</p>
-            </div>
-            
-            <div class="photo-options">
-                <div class="qr-container">
-                    <div class="qr-title">Escanea el código QR</div>
-                    <div class="qr-code">
-                        <!-- En un caso real, aquí iría la imagen del código QR -->
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <p style="font-size: 0.9rem; color: #8a7166;">Si alguien no puede escanear el QR, compártelo para que también pueda participar.</p>
-                </div>
-                
-                <div class="link-container">
-                    <div class="link-title">Si prefieres el enlace directo</div>
-                    <a href="https://tanialuc.github.io/Itinerario_Boda/" class="photo-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        https://tanialuc.github.io/Itinerario_Boda/
-                    </a>
-                    <p style="font-size: 0.9rem; color: #8a7166;">Haz clic en el enlace para acceder al álbum de fotos compartido.</p>
-                </div>
-            </div>
-            
-            <div class="note">
-                <strong>¡Ojo!</strong> Las fotos se subirán a un álbum compartido donde todos los invitados podrán verlas y descargarlas. Por favor, sube solo fotos apropiadas para el evento.
-            </div>
-        </div>
+  <div class="invitacion">
+    <!-- Encabezado simple -->
+    <div class="header">
+      <h1 class="titulo-principal">Itinerario Boda T&M</h1>
+      <p class="fecha-boda">Sábado, 7 de Marzo 2026</p>
     </div>
+    
+    <div class="contenido">
+      <!-- Mensaje de bienvenida -->
+      <div class="mensaje-bienvenida">
+        <p>Queridos invitados,</p>
+        <p>Aquí encontrarán el itinerario de nuestro día especial. ¡Esperamos compartir cada momento con ustedes!</p>
+      </div>
+      
+      <!-- Itinerario principal -->
+      <div class="itinerario">
+        <h3 class="titulo-itinerario">Itinerario del Día</h3>
+        
+        <div class="evento">
+          <span class="hora">10:40 AM</span>
+          <span class="actividad">Toma tu lugar - Recepción de invitados.</span>
+        </div>
+        
+        <div class="evento">
+          <span class="hora">11:00 AM</span>
+          <span class="actividad">Ceremonia - Civil y simbólica.</span>
+        </div>
+        
+        <div class="evento">
+          <span class="hora">12:00 PM</span>
+          <span class="actividad">Sesión de Fotos - Recuerdos para la eternidad.</span>
+        </div>
+        
+        <div class="evento">
+          <span class="hora">1:00 PM</span>
+          <span class="actividad">Almuerzo - Banquete de celebración.</span>
+        </div>
+        
+        <div class="evento">
+          <span class="hora">3:00 PM</span>
+          <span class="actividad">De la mesa al agua: compartamos un momento de relax en las termales.</span>
+        </div>
+      </div>
+      
+      <!-- Sección de Google Photos - NUEVO DISEÑO -->
+      <div class="seccion-fotos">
+        <h3>Comparte tus fotos</h3>
+        
+        <div class="texto-invitacion">
+          <p><strong>Hoy todos somos parte de esta historia.</strong></p>
+          <p>Si capturas algún momento especial, te invitamos a subir tus fotos a nuestro álbum compartido.</p>
+          <p>Queremos guardar recuerdos desde diferentes ángulos y miradas, esos detalles espontáneos que hacen único este día.</p>
+          <p>Si alguien no puede escanear el QR, compártelo para que también pueda participar.</p>
+        </div>
+        
+        <div class="contenedor-qr-boton">
+          <!-- Contenedor del QR -->
+          <div class="qr-contenedor">
+            <div class="qr-code" id="qr-code">
+              <!-- El código QR se generará con JavaScript -->
+            </div>
+            <p class="qr-text">Escanea el código QR</p>
+          </div>
+          
+          <!-- Línea divisoria -->
+          <div class="divisor"></div>
+          
+          <!-- Botón alternativo -->
+          <div class="boton-alternativo">
+            <p class="texto-boton">Si prefieres el enlace directo:</p>
+            <a href="https://photos.app.goo.gl/e2M2xJxB722fqru97" target="_blank" class="btn-fotos">
+              <span class="icono-link">📸</span>
+              Abrir álbum de fotos
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Footer simple -->
+      <div class="footer-simple">
+        <div class="firma-discreta">Tania & Manuel</div>
+        <div class="detalles-finales">
+          <p class="agradecimiento">¡Gracias por ser parte de nuestro día especial!</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script>
-        // Simulación de código QR (en una implementación real, aquí iría la imagen del QR)
-        document.querySelector('.photo-link').addEventListener('click', function() {
-            alert('Redirigiendo al álbum de fotos compartido...');
-        });
-        
-        // Efecto de hover para el código QR
-        const qrCode = document.querySelector('.qr-code');
-        qrCode.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.05)';
-            this.style.transition = 'transform 0.3s ease';
-        });
-        
-        qrCode.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-        });
-    </script>
+  <!-- 2. LUEGO tu script personalizado - AL FINAL DEL BODY -->
+  <script src="script.js"></script>
 </body>
 </html>
