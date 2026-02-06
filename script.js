@@ -1,4 +1,4 @@
-// script.js - VERSIÓN MEJORADA CON VERIFICACIÓN DE CARGA
+// script.js - VERSIÓN ACTUALIZADA PARA NUEVO DISEÑO
 
 // URL del álbum de Google Photos
 const GOOGLE_PHOTOS_URL = "https://photos.app.goo.gl/e2M2xJxB722fqru97";
@@ -23,9 +23,11 @@ function generarQRFuncional() {
         return;
     }
 
-    const qrContainer = document.getElementById('qr-code');
+    // Buscar el contenedor del QR (compatible con nuevo y viejo diseño)
+    const qrContainer = document.querySelector('.contenedor-qr-mejorado') || document.getElementById('qr-code');
+    
     if (!qrContainer) {
-        console.error("❌ No se encontró el contenedor #qr-code");
+        console.error("❌ No se encontró el contenedor para el QR");
         return;
     }
 
@@ -48,10 +50,10 @@ function generarQRFuncional() {
         // Generar el QR usando la misma librería que funciona
         new QRCode(qrInner, {
             text: GOOGLE_PHOTOS_URL,
-            width: 170,
-            height: 170,
+            width: 150,
+            height: 150,
             colorDark: "#8B4513",
-            colorLight: "#fdf8f5",
+            colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
         });
 
@@ -63,7 +65,6 @@ function generarQRFuncional() {
         if (canvas) {
             canvas.style.cursor = 'pointer';
             canvas.style.borderRadius = '8px';
-            canvas.style.border = '1px solid rgba(180, 142, 92, 0.3)';
             
             canvas.addEventListener('click', function() {
                 window.open(GOOGLE_PHOTOS_URL, '_blank');
@@ -78,7 +79,7 @@ function generarQRFuncional() {
 
 // Fallback que se muestra SOLO si falla el QR
 function mostrarFallbackSeguro() {
-    const qrContainer = document.getElementById('qr-code');
+    const qrContainer = document.querySelector('.contenedor-qr-mejorado') || document.getElementById('qr-code');
     if (!qrContainer) return;
     
     qrContainer.innerHTML = `
@@ -99,8 +100,8 @@ function inicializarAplicacion() {
     // Intentar generar el QR inmediatamente
     generarQRFuncional();
 
-    // Configurar botón de fotos
-    const btnFotos = document.querySelector('.btn-fotos');
+    // Configurar botón de fotos del nuevo diseño
+    const btnFotos = document.querySelector('.btn-enlace-fotos');
     if (btnFotos) {
         btnFotos.href = GOOGLE_PHOTOS_URL;
         btnFotos.target = "_blank";
@@ -112,6 +113,16 @@ function inicializarAplicacion() {
         btnFotos.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
         });
+    }
+
+    // Configurar también el contenedor QR para hacerlo más interactivo
+    const qrContainer = document.querySelector('.contenedor-qr-mejorado');
+    if (qrContainer) {
+        qrContainer.addEventListener('click', function() {
+            window.open(GOOGLE_PHOTOS_URL, '_blank');
+        });
+        
+        qrContainer.title = "Haz clic para abrir el álbum";
     }
 
     // Intentar de nuevo después de 2 segundos por si acaso
