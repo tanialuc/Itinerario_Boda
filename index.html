@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tania y Manuel - Itinerario de Boda</title>
+  <title>Tania y Manuel - Itinerario de la Boda</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,200 +18,180 @@
       <p class="fecha-principal">Sábado, 7 de Marzo 2026</p>
     </div>
     
-    <!-- Contador regresivo -->
-    <div class="contador-container">
-      <div id="contador-dias">
-        <div class="contador-item">
-          <span class="contador-numero" id="dias">--</span>
-          <span class="contador-etiqueta">Días</span>
-        </div>
-        <div class="contador-separador">:</div>
-        <div class="contador-item">
-          <span class="contador-numero" id="horas">--</span>
-          <span class="contador-etiqueta">Horas</span>
-        </div>
-        <div class="contador-separador">:</div>
-        <div class="contador-item">
-          <span class="contador-numero" id="minutos">--</span>
-          <span class="contador-etiqueta">Minutos</span>
-        </div>
-        <div class="contador-separador">:</div>
-        <div class="contador-item">
-          <span class="contador-numero" id="segundos">--</span>
-          <span class="contador-etiqueta">Segundos</span>
-        </div>
-      </div>
-      <p class="contador-mensaje">Hasta nuestro gran día</p>
+    <!-- Mensaje de bienvenida -->
+    <div class="mensaje-bienvenida">
+      <p>Queridos invitados,</p>
+      <p>Aquí encontrarán el itinerario de nuestro día especial. ¡Esperamos compartir cada momento con ustedes!</p>
     </div>
     
-    <!-- Mapa del día -->
-    <div class="mapa-dia">
-      <h2 class="titulo-seccion">Mapa del Día</h2>
-      <div class="linea-tiempo">
+    <!-- Itinerario principal -->
+    <div class="itinerario-principal">
+      <h2 class="titulo-seccion">Programa del Día</h2>
+      
+      <div class="lista-eventos">
         
-        <div class="evento-destacado">
-          <div class="evento-hora">10:40 AM</div>
-          <div class="evento-punto"></div>
-          <div class="evento-detalle">
-            <h3>Recepción de Invitados</h3>
-            <p>Toma tu lugar en la ceremonia</p>
-            <div class="evento-icono">👥</div>
+        <div class="evento">
+          <div class="evento-tiempo">
+            <span class="hora">10:40 AM</span>
+            <span class="duracion">20 min</span>
           </div>
+          <div class="evento-contenido">
+            <h3 class="evento-titulo">Recepción de Invitados</h3>
+            <p class="evento-descripcion">Toma tu lugar en la ceremonia</p>
+            <div class="evento-lugar">
+              <span class="icono-lugar">📍</span>
+              <span>Jardines del Hotel</span>
+            </div>
+          </div>
+          <div class="evento-icono">👥</div>
         </div>
         
-        <div class="evento-destacado">
-          <div class="evento-hora">11:00 AM</div>
-          <div class="evento-punto"></div>
-          <div class="evento-detalle">
-            <h3>Ceremonia</h3>
-            <p>Civil y simbólica en los jardines</p>
-            <div class="evento-icono">💒</div>
+        <div class="evento">
+          <div class="evento-tiempo">
+            <span class="hora">11:00 AM</span>
+            <span class="duracion">45 min</span>
           </div>
+          <div class="evento-contenido">
+            <h3 class="evento-titulo">Ceremonia</h3>
+            <p class="evento-descripcion">Civil y simbólica en los jardines</p>
+            <div class="evento-lugar">
+              <span class="icono-lugar">📍</span>
+              <span>Jardines del Hotel</span>
+            </div>
+          </div>
+          <div class="evento-icono">💒</div>
         </div>
         
-        <div class="evento-destacado">
-          <div class="evento-hora">12:00 PM</div>
-          <div class="evento-punto"></div>
-          <div class="evento-detalle">
-            <h3>Sesión de Fotos</h3>
-            <p>Recuerdos para la eternidad</p>
-            <div class="evento-icono">📸</div>
+        <div class="evento">
+          <div class="evento-tiempo">
+            <span class="hora">12:00 PM</span>
+            <span class="duracion">1 hora</span>
           </div>
+          <div class="evento-contenido">
+            <h3 class="evento-titulo">Sesión de Fotos</h3>
+            <p class="evento-descripcion">Recuerdos para la eternidad</p>
+            <div class="evento-lugar">
+              <span class="icono-lugar">📍</span>
+              <span>Diferentes locaciones del resort</span>
+            </div>
+            <div class="evento-nota">
+              <small>Para invitados: Cóctel de bienvenida</small>
+            </div>
+          </div>
+          <div class="evento-icono">📸</div>
         </div>
         
-        <div class="evento-destacado">
-          <div class="evento-hora">1:00 PM</div>
-          <div class="evento-punto"></div>
-          <div class="evento-detalle">
-            <h3>Almuerzo de Celebración</h3>
-            <p>Banquete especial para todos</p>
-            <div class="evento-icono">🍽️</div>
+        <div class="evento">
+          <div class="evento-tiempo">
+            <span class="hora">1:00 PM</span>
+            <span class="duracion">2 horas</span>
           </div>
+          <div class="evento-contenido">
+            <h3 class="evento-titulo">Almuerzo de Celebración</h3>
+            <p class="evento-descripcion">Banquete especial para todos</p>
+            <div class="evento-lugar">
+              <span class="icono-lugar">📍</span>
+              <span>Salón Principal del Resort</span>
+            </div>
+            <div class="evento-nota">
+              <small>Menú vegetariano disponible</small>
+            </div>
+          </div>
+          <div class="evento-icono">🍽️</div>
         </div>
         
-        <div class="evento-destacado">
-          <div class="evento-hora">3:00 PM</div>
-          <div class="evento-punto"></div>
-          <div class="evento-detalle">
-            <h3>Momento Relax</h3>
-            <p>Compartamos en las termales</p>
-            <div class="evento-icono">💦</div>
+        <div class="evento">
+          <div class="evento-tiempo">
+            <span class="hora">3:00 PM</span>
+            <span class="duracion">Libre</span>
           </div>
+          <div class="evento-contenido">
+            <h3 class="evento-titulo">Momento Relax en las Termales</h3>
+            <p class="evento-descripcion">De la mesa al agua: compartamos un momento de relax</p>
+            <div class="evento-lugar">
+              <span class="icono-lugar">📍</span>
+              <span>Aguas Termales del Resort</span>
+            </div>
+            <div class="evento-nota">
+              <small>Traer traje de baño y toalla</small>
+            </div>
+          </div>
+          <div class="evento-icono">💦</div>
         </div>
         
       </div>
     </div>
     
-    <!-- Detalles por evento -->
-    <div class="detalles-container">
-      <h2 class="titulo-seccion">Detalles de Cada Evento</h2>
-      
-      <div class="detalle-evento">
-        <div class="detalle-header" style="background: linear-gradient(135deg, #8B4513, #b48e5c);">
-          <h3>📝 Ceremonia</h3>
-          <span class="detalle-hora">11:00 AM</span>
+    <!-- Sección de Google Photos -->
+    <div class="seccion-fotos">
+      <div class="contenido-fotos">
+        <div class="info-fotos">
+          <h3>Comparte tus fotos</h3>
+          <p>Sube las fotos que tomes durante la boda a nuestro álbum compartido de Google Photos</p>
+          <div class="link-fotos">
+            <a href="https://photos.app.goo.gl/e2M2xJxB722fqru97" target="_blank" class="btn-fotos">
+              <span class="icono-link">📸</span>
+              Abrir álbum de fotos
+            </a>
+          </div>
         </div>
-        <div class="detalle-contenido">
-          <p><strong>Lugar:</strong> Jardines del Hotel Los Lagos Spa & Resort</p>
-          <p><strong>Duración:</strong> Aproximadamente 45 minutos</p>
-          <p><strong>Nota:</strong> Ceremonia civil seguida de una ceremonia simbólica personalizada</p>
-        </div>
-      </div>
-      
-      <div class="detalle-evento">
-        <div class="detalle-header" style="background: linear-gradient(135deg, #b48e5c, #8B4513);">
-          <h3>📸 Sesión de Fotos</h3>
-          <span class="detalle-hora">12:00 PM</span>
-        </div>
-        <div class="detalle-contenido">
-          <p><strong>Lugar:</strong> Diferentes locaciones del resort</p>
-          <p><strong>Duración:</strong> 1 hora aproximadamente</p>
-          <p><strong>Nota:</strong> Los novios tomarán fotos formales, los invitados pueden disfrutar de un cóctel de bienvenida</p>
-        </div>
-      </div>
-      
-      <div class="detalle-evento">
-        <div class="detalle-header" style="background: linear-gradient(135deg, #8B4513, #b48e5c);">
-          <h3>🍽️ Almuerzo</h3>
-          <span class="detalle-hora">1:00 PM</span>
-        </div>
-        <div class="detalle-contenido">
-          <p><strong>Lugar:</strong> Salón principal del resort</p>
-          <p><strong>Duración:</strong> 2 horas aproximadamente</p>
-          <p><strong>Menú:</strong> Opción vegetariana y no vegetariana disponible</p>
-          <p><strong>Nota:</strong> Brindis y discursos durante el almuerzo</p>
-        </div>
-      </div>
-      
-      <div class="detalle-evento">
-        <div class="detalle-header" style="background: linear-gradient(135deg, #b48e5c, #8B4513);">
-          <h3>💦 Termales</h3>
-          <span class="detalle-hora">3:00 PM</span>
-        </div>
-        <div class="detalle-contenido">
-          <p><strong>Lugar:</strong> Aguas termales del resort</p>
-          <p><strong>Duración:</strong> Hasta las 6:00 PM</p>
-          <p><strong>Incluye:</strong> Acceso a todas las piscinas termales</p>
-          <p><strong>Recomendación:</strong> Traer traje de baño y toalla</p>
+        <div class="qr-container">
+          <div class="qr-code" id="qr-code">
+            <!-- El código QR se generará con JavaScript -->
+            <div class="qr-placeholder">
+              <p>Escanea para acceder al álbum</p>
+            </div>
+          </div>
+          <p class="qr-text">Escanea el código QR</p>
         </div>
       </div>
     </div>
     
-    <!-- Información importante -->
-    <div class="info-container">
-      <h2 class="titulo-seccion">Información Importante</h2>
-      
-      <div class="info-grid">
-        <div class="info-card">
-          <div class="info-icono">📍</div>
-          <h3>Ubicación</h3>
+    <!-- Información básica -->
+    <div class="info-basica">
+      <div class="info-item">
+        <div class="info-icono">📍</div>
+        <div class="info-texto">
+          <h4>Ubicación</h4>
           <p><strong>Hotel Los Lagos Spa & Resort</strong></p>
-          <p>La Fortuna de San Carlos, Costa Rica</p>
-          <a href="https://waze.com/ul/hd1gg8vm7y" target="_blank" class="btn-waze">
-            Abrir en Waze
-          </a>
+          <p>La Fortuna de San Carlos</p>
         </div>
-        
-        <div class="info-card">
-          <div class="info-icono">👗</div>
-          <h3>Vestimenta</h3>
+      </div>
+      
+      <div class="info-item">
+        <div class="info-icono">👗</div>
+        <div class="info-texto">
+          <h4>Vestimenta</h4>
           <p><strong>Formal Tropical</strong></p>
           <p>Inspirado en nuestra paleta de colores</p>
-          <div class="paleta-mini">
-            <div class="color-muestra" style="background: #b48e5c;"></div>
-            <div class="color-muestra" style="background: #8B4513;"></div>
-            <div class="color-muestra" style="background: #fdf8f5;"></div>
-            <div class="color-muestra" style="background: #333333;"></div>
-          </div>
         </div>
-        
-        <div class="info-card">
-          <div class="info-icono">⏰</div>
-          <h3>Puntualidad</h3>
-          <p>Por favor llegar 20 minutos antes de cada evento</p>
-          <p>El transporte entre áreas del resort será proporcionado</p>
-        </div>
-        
-        <div class="info-card">
-          <div class="info-icono">📱</div>
-          <h3>Contacto</h3>
-          <p><strong>Tania:</strong> 7295-7888</p>
-          <p><strong>Manuel:</strong> 8951-1422</p>
-          <p>Cualquier duda, no dudes en llamarnos</p>
+      </div>
+      
+      <div class="info-item">
+        <div class="info-icono">⏰</div>
+        <div class="info-texto">
+          <h4>Recomendación</h4>
+          <p><strong>Llegar 20 minutos antes</strong></p>
+          <p>Para cada evento programado</p>
         </div>
       </div>
     </div>
     
     <!-- Footer -->
     <div class="footer">
-      <p>Con amor, Tania y Manuel</p>
-      <p class="footer-sub">¡Gracias por ser parte de nuestro día especial!</p>
-      <div class="fecha-final">
-        7 de Marzo, 2026 · Hotel Los Lagos Spa & Resort
+      <div class="mensaje-final">
+        <p>Con amor,</p>
+        <p class="firma">Tania y Manuel</p>
+      </div>
+      <div class="detalles-finales">
+        <p>7 de Marzo, 2026 · Hotel Los Lagos Spa & Resort</p>
+        <p class="agradecimiento">¡Gracias por ser parte de nuestro día especial!</p>
       </div>
     </div>
   </div>
 
+  <!-- Librería para generar QR (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
