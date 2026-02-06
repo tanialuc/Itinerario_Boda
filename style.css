@@ -34,7 +34,7 @@ body {
   position: relative;
 }
 
-/* IMAGEN DE FONDO - MÁS GRANDE Y MEJOR POSICIONADA */
+/* IMAGEN DE FONDO */
 .invitacion::before {
   content: "";
   position: absolute;
@@ -45,8 +45,8 @@ body {
   background-image: url('flores-izquierda.png');
   background-position: left center;
   background-repeat: repeat-y;
-  background-size: 850px auto; /* MÁS GRANDE PARA QUE NO SE CORTE */
-  opacity: 0.12; /* UN POCO MÁS VISIBLE */
+  background-size: 850px auto;
+  opacity: 0.12;
   z-index: 0;
   pointer-events: none;
 }
@@ -167,10 +167,10 @@ body {
   line-height: 1.4;
 }
 
-/* Sección de Google Photos - CORREGIDA PARA QUE EL QR SEA VISIBLE */
+/* Sección de Google Photos - NUEVO DISEÑO */
 .seccion-fotos {
   background: linear-gradient(135deg, #f8f5f0, #f0ece5);
-  padding: 25px 20px;
+  padding: 30px 25px;
   border-radius: 12px;
   margin: 25px 0;
   text-align: center;
@@ -180,16 +180,51 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-.contenido-fotos {
+.seccion-fotos h3 {
+  font-size: clamp(1.2em, 4vw, 1.5em);
+  color: var(--color-cafe);
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.texto-invitacion {
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.texto-invitacion p {
+  margin-bottom: 15px;
+  color: var(--color-texto);
+  font-size: clamp(0.95em, 3vw, 1em);
+}
+
+.texto-invitacion p:last-child {
+  margin-bottom: 0;
+}
+
+.texto-invitacion p:first-child {
+  font-weight: 600;
+  color: var(--color-cafe);
+  font-size: clamp(1em, 3vw, 1.1em);
+}
+
+/* Contenedor principal QR + Botón */
+.contenedor-qr-boton {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
-  margin-top: 15px;
+  gap: 30px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
-  .contenido-fotos {
+  .contenedor-qr-boton {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -197,63 +232,19 @@ body {
   }
 }
 
-.info-fotos {
+/* Contenedor del QR */
+.qr-contenedor {
   flex: 1;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.info-fotos h3 {
-  font-size: clamp(1.1em, 4vw, 1.3em);
-  color: var(--color-cafe);
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 15px;
-}
-
-.info-fotos p {
-  font-size: clamp(0.95em, 4vw, 1em);
-  line-height: 1.5;
-  color: var(--color-texto);
-  margin-bottom: 20px;
-}
-
-.btn-fotos {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--color-dorado);
-  color: var(--color-blanco);
-  padding: 12px 25px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-family: 'Source Sans Pro', sans-serif;
-  border: none;
-  cursor: pointer;
-  font-size: clamp(0.9em, 3vw, 1em);
-  box-shadow: 0 4px 8px rgba(180, 142, 92, 0.3);
-}
-
-.btn-fotos:hover {
-  background: var(--color-cafe);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(139, 69, 19, 0.3);
-}
-
-/* QR CONTAINER - VISIBLE */
-.qr-container {
   text-align: center;
-  flex-shrink: 0;
-  background-color: rgba(255, 255, 255, 0.9); /* MÁS OPACO PARA MEJOR VISIBILIDAD */
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  min-width: 250px;
 }
 
 .qr-code {
-  width: 200px; /* UN POCO MÁS GRANDE */
+  width: 200px;
   height: 200px;
   background: var(--color-blanco);
   border-radius: 10px;
@@ -266,30 +257,71 @@ body {
   border: 2px solid var(--color-dorado);
 }
 
-.qr-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f8f5f0, #f0ece5);
-  border-radius: 8px;
-  border: 2px dashed var(--color-dorado);
-}
-
-.qr-placeholder p {
-  color: var(--color-cafe);
-  font-weight: 600;
-  text-align: center;
-  padding: 20px;
-  font-size: 0.95em;
-}
-
 .qr-text {
   font-size: 0.95em;
   color: var(--color-texto);
   font-weight: 600;
   margin-top: 10px;
+}
+
+/* Línea divisoria */
+.divisor {
+  width: 1px;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent, var(--color-dorado), transparent);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .divisor {
+    display: block;
+  }
+}
+
+/* Botón alternativo */
+.boton-alternativo {
+  flex: 1;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  min-width: 250px;
+}
+
+.texto-boton {
+  font-size: 0.95em;
+  color: var(--color-texto);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.btn-fotos {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-dorado);
+  color: var(--color-blanco);
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: 'Source Sans Pro', sans-serif;
+  border: none;
+  cursor: pointer;
+  font-size: clamp(0.95em, 3vw, 1.05em);
+  box-shadow: 0 4px 8px rgba(180, 142, 92, 0.3);
+}
+
+.btn-fotos:hover {
+  background: var(--color-cafe);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(139, 69, 19, 0.3);
+}
+
+.icono-link {
+  font-size: 1.2em;
 }
 
 /* Footer simple */
@@ -340,7 +372,7 @@ body {
   }
   
   .invitacion::before {
-    background-size: 700px auto; /* AJUSTE PARA MÓVIL */
+    background-size: 700px auto;
   }
   
   .header, .contenido {
@@ -371,27 +403,28 @@ body {
     height: 180px;
   }
   
-  .qr-placeholder p {
-    padding: 15px;
-    font-size: 0.85em;
+  .contenedor-qr-boton {
+    gap: 20px;
   }
   
-  .contenido-fotos {
-    text-align: center;
+  .qr-contenedor,
+  .boton-alternativo {
+    padding: 15px;
   }
 }
 
 @media (max-width: 480px) {
   .invitacion::before {
-    background-size: 600px auto; /* AJUSTE PARA PANTALLAS PEQUEÑAS */
-  }
-  
-  .info-fotos {
-    text-align: center;
+    background-size: 600px auto;
   }
   
   .qr-code {
     width: 160px;
     height: 160px;
+  }
+  
+  .btn-fotos {
+    padding: 12px 20px;
+    font-size: 0.9em;
   }
 }
