@@ -1,90 +1,133 @@
-// Función para crear la fecha de la boda en zona horaria de Costa Rica
-function crearFechaBodaCR() {
-  // 7 de marzo 2026, 11:00 AM en UTC-6 (Costa Rica)
-  return new Date('2026-03-07T11:00:00-06:00');
+// Función para generar el código QR
+function generarQR() {
+  const urlGooglePhotos = "https://photos.app.goo.gl/e2M2xJxB722fqru97";
+  const qrContainer = document.getElementById('qr-code');
+  
+  // Limpiar el contenedor
+  qrContainer.innerHTML = '';
+  
+  // Generar el código QR
+  QRCode.toCanvas(qrContainer, urlGooglePhotos, {
+    width: 170,
+    height: 170,
+    margin: 1,
+    color: {
+      dark: '#8B4513', // Color café
+      light: '#fdf8f5' // Color beige
+    }
+  }, function(error) {
+    if (error) {
+      console.error('Error generando QR:', error);
+      // Mostrar placeholder en caso de error
+      qrContainer.innerHTML = `
+        <div class="qr-placeholder">
+          <p>Error generando QR</p>
+          <a href="${urlGooglePhotos}" target="_blank" 
+             style="color: var(--color-cafe); text-decoration: underline;">
+            Haz clic aquí para acceder
+          </a>
+        </div>
+      `;
+    } else {
+      // Agregar estilos al canvas generado
+      const canvas = qrContainer.querySelector('canvas');
+      if (canvas) {
+        canvas.style.borderRadius = '8px';
+        canvas.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+      }
+    }
+  });
 }
 
-// Función para actualizar el contador regresivo
-function actualizarContador() {
-  const fechaBoda = crearFechaBodaCR();
-  const ahora = new Date();
-  
-  // Diferencia en milisegundos
-  const diferencia = fechaBoda - ahora;
-  
-  // Si ya pasó la fecha
-  if (diferencia < 0) {
-    document.getElementById('dias').textContent = '00';
-    document.getElementById('horas').textContent = '00';
-    document.getElementById('minutos').textContent = '00';
-    document.getElementById('segundos').textContent = '00';
-    return;
-  }
-  
-  // Cálculos
-  const segundos = Math.floor((diferencia / 1000) % 60);
-  const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
-  const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
-  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  
-  // Actualizar elementos
-  document.getElementById('dias').textContent = dias.toString().padStart(2, '0');
-  document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
-  document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
-  document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
-}
-
-// Inicializar cuando el DOM esté listo
+// Función para inicializar todo cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Itinerario de boda cargado');
   
-  // Iniciar contador
-  actualizarContador();
-  setInterval(actualizarContador, 1000);
+  // Generar el código QR
+  generarQR();
   
-  // Agregar animaciones a las tarjetas de evento
-  const eventos = document.querySelectorAll('.evento-detalle');
-  eventos.forEach((evento, index) => {
-    // Animación de aparición
-    setTimeout(() => {
-      evento.style.opacity = '0';
-      evento.style.transform = 'translateY(20px)';
-      evento.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      
-      setTimeout(() => {
-        evento.style.opacity = '1';
-        evento.style.transform = 'translateY(0)';
-      }, 100);
-    }, index * 100);
-  });
-  
-  // Agregar efecto hover mejorado a las tarjetas de información
-  const infoCards = document.querySelectorAll('.info-card');
-  infoCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.boxShadow = '0 10px 25px rgba(180, 142, 92, 0.15)';
+  // Agregar efectos de hover a los eventos
+  const eventos = document.querySelectorAll('.evento');
+  eventos.forEach(evento => {
+    // Efecto de sombra al pasar el mouse
+    evento.addEventListener('mouseenter', function() {
+      this.style.boxShadow = '0 15px 30px rgba(139, 69, 19, 0.15)';
     });
     
-    card.addEventListener('mouseleave', function() {
+    evento.addEventListener('mouseleave', function() {
       this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
     });
   });
   
-  // Botón de Waze con confirmación
-  const wazeBtn = document.querySelector('.btn-waze');
-  if (wazeBtn) {
-    wazeBtn.addEventListener('click', function(e) {
-      if (!confirm('¿Quieres abrir la ubicación en Waze?')) {
-        e.preventDefault();
+  // Agregar efecto al botón de fotos
+  const btnFotos = document.querySelector('.btn-fotos');
+  if (btnFotos) {
+    btnFotos.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-3px)';
+      this.style.boxShadow = '0 15px 25px rgba(180, 142, 92, 0.4)';
+    });
+    
+    btnFotos.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+      this.style.boxShadow = '0 10px 20px rgba(180, 142, 92, 0.3)';
+    });
+  }
+  
+  // Agregar funcionalidad para copiar el enlace (opcional)
+  const qrCode = document.getElementById('qr-code');
+  if (qrCode) {
+    qrCode.addEventListener('click', function() {
+      // Solo si el QR se generó correctamente
+      const canvas = this.querySelector('canvas');
+      if (canvas) {
+        // Crear un enlace de descarga para el QR
+        const link = document.createElement('a');
+        link.download = 'qr-boda-tania-manuel.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        
+        // Mostrar mensaje temporal
+        const mensaje = document.createElement('div');
+        mensaje.textContent = 'QR descargado';
+        mensaje.style.position = 'fixed';
+        mensaje.style.bottom = '20px';
+        mensaje.style.left = '50%';
+        mensaje.style.transform = 'translateX(-50%)';
+        mensaje.style.background = 'var(--color-dorado)';
+        mensaje.style.color = 'white';
+        mensaje.style.padding = '10px 20px';
+        mensaje.style.borderRadius = '6px';
+        mensaje.style.zIndex = '1000';
+        document.body.appendChild(mensaje);
+        
+        setTimeout(() => {
+          document.body.removeChild(mensaje);
+        }, 2000);
       }
     });
+    
+    // Cambiar cursor cuando hay canvas
+    qrCode.style.cursor = 'pointer';
   }
 });
 
-// Función para mostrar/ocultar detalles del evento
-function toggleDetalles(eventoId) {
-  const detalles = document.getElementById(`detalles-${eventoId}`);
-  if (detalles) {
-    detalles.style.display = detalles.style.display === 'none' ? 'block' : 'none';
+// Función para compartir el álbum (opcional)
+function compartirAlbum() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Álbum de fotos - Boda Tania y Manuel',
+      text: 'Sube tus fotos de la boda al álbum compartido',
+      url: 'https://photos.app.goo.gl/e2M2xJxB722fqru97'
+    })
+    .catch(console.error);
+  } else {
+    // Copiar al portapapeles como fallback
+    navigator.clipboard.writeText('https://photos.app.goo.gl/e2M2xJxB722fqru97')
+      .then(() => {
+        alert('Enlace copiado al portapapeles');
+      })
+      .catch(err => {
+        console.error('Error copiando:', err);
+      });
   }
 }
