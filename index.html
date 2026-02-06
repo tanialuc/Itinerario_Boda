@@ -11,6 +11,8 @@
 </head>
 <body>
   <div class="invitacion">
+    <!-- Imagen de fondo SOLO en el contenedor -->
+    <div class="fondo-floral"></div>
     
     <!-- Encabezado simple -->
     <div class="header">
@@ -27,6 +29,7 @@
       
       <!-- Itinerario principal -->
       <div class="itinerario">
+        <h3 class="titulo-itinerario">Itinerario del Día</h3>
         
         <div class="evento">
           <span class="hora">10:40 AM</span>
@@ -52,29 +55,30 @@
           <span class="hora">3:00 PM</span>
           <span class="actividad">De la mesa al agua: compartamos un momento de relax en las termales.</span>
         </div>
-        
       </div>
       
       <!-- Sección de Google Photos -->
       <div class="seccion-fotos">
-        <div class="info-fotos">
-          <h3>Comparte tus fotos</h3>
-          <p>Sube las fotos que tomes durante la boda a nuestro álbum compartido de Google Photos</p>
-          <div class="link-fotos">
-            <a href="https://photos.app.goo.gl/e2M2xJxB722fqru97" target="_blank" class="btn-fotos">
-              <span class="icono-link">📸</span>
-              Abrir álbum de fotos
-            </a>
-          </div>
-        </div>
-        <div class="qr-container">
-          <div class="qr-code" id="qr-code">
-            <!-- El código QR se generará con JavaScript -->
-            <div class="qr-placeholder">
-              <p>Escanea para acceder al álbum</p>
+        <div class="contenido-fotos">
+          <div class="info-fotos">
+            <h3>Comparte tus fotos</h3>
+            <p>Sube las fotos que tomes durante la boda a nuestro álbum compartido de Google Photos</p>
+            <div class="link-fotos">
+              <a href="https://photos.app.goo.gl/e2M2xJxB722fqru97" target="_blank" class="btn-fotos">
+                <span class="icono-link">📸</span>
+                Abrir álbum de fotos
+              </a>
             </div>
           </div>
-          <p class="qr-text">Escanea el código QR</p>
+          <div class="qr-container">
+            <div class="qr-code" id="qr-code">
+              <!-- El código QR se generará con JavaScript -->
+              <div class="qr-placeholder">
+                <p>Escanea para acceder al álbum</p>
+              </div>
+            </div>
+            <p class="qr-text">Escanea el código QR</p>
+          </div>
         </div>
       </div>
       
@@ -82,7 +86,6 @@
       <div class="footer-simple">
         <div class="firma-discreta">tania & manuel</div>
         <div class="detalles-finales">
-          <p>Hotel Los Lagos Spa & Resort</p>
           <p class="agradecimiento">¡Gracias por ser parte de nuestro día especial!</p>
         </div>
       </div>
