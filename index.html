@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- 1. PRIMERO la librería QRCode - DEBE ESTAR EN EL HEAD -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 </head>
 <body>
   <div class="invitacion">
@@ -70,9 +72,6 @@
           <div class="qr-container">
             <div class="qr-code" id="qr-code">
               <!-- El código QR se generará con JavaScript -->
-              <div class="qr-placeholder">
-                <p>Código QR para el álbum</p>
-              </div>
             </div>
             <p class="qr-text">Escanea el código QR</p>
           </div>
@@ -89,10 +88,7 @@
     </div>
   </div>
 
-  <!-- Librería para generar QR (versión diferente) -->
-  <!-- ESTA es la librería que SÍ funciona (la misma de tu tarjeta) -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
-<!-- Luego tu script -->
+  <!-- 2. LUEGO tu script personalizado - AL FINAL DEL BODY -->
   <script src="script.js"></script>
 </body>
 </html>
