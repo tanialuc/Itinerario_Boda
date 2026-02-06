@@ -22,14 +22,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-image: url('flores-izquierda.png');
-  background-position: left center;
-  background-repeat: repeat-y;
-  background-size: 750px auto;
-  background-attachment: fixed;
-  opacity: 0.15;
+  position: relative;
 }
 
+/* Imagen de fondo suave */
 body::before {
   content: "";
   position: fixed;
@@ -41,81 +37,56 @@ body::before {
   background-position: left center;
   background-repeat: repeat-y;
   background-size: 750px auto;
-  opacity: 0.1;
+  opacity: 0.08; /* Más suave que antes */
   z-index: -1;
   pointer-events: none;
 }
 
 .contenedor-itinerario {
-  max-width: 800px;
+  max-width: 700px;
   width: 100%;
   background: var(--color-blanco);
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   position: relative;
   margin: 20px 0;
   z-index: 1;
 }
 
-/* Header */
+/* Header simple */
 .header {
   background: linear-gradient(135deg, var(--color-cafe), var(--color-dorado));
   color: var(--color-blanco);
-  padding: 40px 30px;
+  padding: 30px 20px;
   text-align: center;
   position: relative;
   z-index: 2;
 }
 
-.header::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  background-image: url('flores-izquierda.png');
-  background-position: left center;
-  background-repeat: repeat-y;
-  background-size: 750px auto;
-  opacity: 0.1;
-  z-index: -1;
-  pointer-events: none;
-}
-
-.nombres-novios {
+.titulo-principal {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5em, 8vw, 4em);
+  font-size: clamp(2em, 6vw, 2.8em);
   font-weight: 500;
-  margin: 0;
+  margin: 0 0 10px 0;
   letter-spacing: 1px;
   line-height: 1.1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.subtitulo {
-  font-size: clamp(1.2em, 4vw, 1.8em);
-  font-weight: 300;
-  margin: 15px 0 10px 0;
-  opacity: 0.95;
-  font-style: italic;
-}
-
-.fecha-principal {
-  font-size: clamp(1em, 3vw, 1.3em);
+.fecha-boda {
+  font-size: clamp(1em, 3vw, 1.2em);
   font-weight: 400;
-  margin-top: 10px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  opacity: 0.9;
   text-transform: uppercase;
 }
 
 /* Mensaje de bienvenida */
 .mensaje-bienvenida {
-  padding: 30px;
+  padding: 25px;
   text-align: center;
   background: var(--color-beige);
-  border-bottom: 2px solid var(--color-dorado);
+  border-bottom: 1px solid rgba(180, 142, 92, 0.2);
   position: relative;
   z-index: 2;
 }
@@ -137,52 +108,32 @@ body::before {
 
 /* Itinerario principal */
 .itinerario-principal {
-  padding: 40px 30px;
+  padding: 30px 25px;
   position: relative;
   z-index: 2;
 }
 
-.titulo-seccion {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8em, 6vw, 2.5em);
-  color: var(--color-cafe);
-  text-align: center;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.titulo-seccion::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 3px;
-  background: var(--color-dorado);
-}
-
 .lista-eventos {
-  max-width: 700px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
 .evento {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   gap: 20px;
-  padding: 25px;
-  margin-bottom: 20px;
+  padding: 20px;
+  margin-bottom: 15px;
   background: linear-gradient(135deg, #f8f5f0, #f0ece5);
-  border-radius: 15px;
-  border-left: 5px solid var(--color-dorado);
+  border-radius: 12px;
+  border-left: 4px solid var(--color-dorado);
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .evento:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .evento-tiempo {
@@ -190,23 +141,23 @@ body::before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 100px;
+  min-width: 90px;
 }
 
 .hora {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3em, 4vw, 1.6em);
+  font-size: clamp(1.2em, 4vw, 1.4em);
   font-weight: 600;
   color: var(--color-cafe);
   margin-bottom: 5px;
 }
 
 .duracion {
-  font-size: 0.9em;
+  font-size: 0.85em;
   color: var(--color-dorado);
   background: rgba(180, 142, 92, 0.1);
   padding: 3px 10px;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: 600;
 }
 
@@ -216,14 +167,15 @@ body::before {
 
 .evento-titulo {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.2em, 4vw, 1.4em);
+  font-size: clamp(1.1em, 4vw, 1.3em);
   color: var(--color-cafe);
   margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .evento-descripcion {
   color: var(--color-texto);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   line-height: 1.5;
 }
 
@@ -231,35 +183,30 @@ body::before {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.95em;
+  font-size: 0.9em;
   color: #666;
   margin-bottom: 8px;
 }
 
 .icono-lugar {
   color: var(--color-dorado);
+  font-size: 0.9em;
 }
 
 .evento-nota {
-  font-size: 0.85em;
+  font-size: 0.8em;
   color: #888;
   font-style: italic;
-}
-
-.evento-icono {
-  font-size: 2.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
+  padding-top: 5px;
+  border-top: 1px dashed rgba(180, 142, 92, 0.3);
 }
 
 /* Sección de Google Photos */
 .seccion-fotos {
   background: linear-gradient(135deg, var(--color-beige), #f8f5f0);
-  padding: 40px 30px;
-  border-top: 2px solid var(--color-dorado);
-  border-bottom: 2px solid var(--color-dorado);
+  padding: 30px 25px;
+  border-top: 1px solid rgba(180, 142, 92, 0.2);
+  border-bottom: 1px solid rgba(180, 142, 92, 0.2);
   position: relative;
   z-index: 2;
 }
@@ -268,8 +215,8 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  max-width: 700px;
+  gap: 25px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -277,7 +224,7 @@ body::before {
   .contenido-fotos {
     flex-direction: row;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
   }
 }
 
@@ -287,37 +234,40 @@ body::before {
 
 .info-fotos h3 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.5em, 4vw, 2em);
+  font-size: clamp(1.2em, 4vw, 1.6em);
   color: var(--color-cafe);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  font-weight: 500;
 }
 
 .info-fotos p {
-  line-height: 1.6;
-  margin-bottom: 25px;
+  line-height: 1.5;
+  margin-bottom: 20px;
   color: var(--color-texto);
+  font-size: clamp(0.95em, 3vw, 1em);
 }
 
 .btn-fotos {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: linear-gradient(135deg, var(--color-dorado), var(--color-cafe));
   color: var(--color-blanco);
-  padding: 12px 25px;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
+  font-size: clamp(0.9em, 3vw, 1em);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-fotos:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(180, 142, 92, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(180, 142, 92, 0.3);
 }
 
 .icono-link {
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .qr-container {
@@ -325,13 +275,13 @@ body::before {
 }
 
 .qr-code {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   background: var(--color-blanco);
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -344,7 +294,7 @@ body::before {
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #f8f5f0, #f0ece5);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px dashed var(--color-dorado);
 }
 
@@ -352,150 +302,54 @@ body::before {
   color: var(--color-cafe);
   font-weight: 600;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
+  font-size: 0.9em;
 }
 
 .qr-text {
-  font-size: 0.95em;
+  font-size: 0.9em;
   color: var(--color-texto);
   font-weight: 600;
 }
 
-/* Información básica */
-.info-basica {
-  padding: 40px 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  position: relative;
-  z-index: 2;
-}
-
-.info-item {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
-
-.info-icono {
-  font-size: 2.2em;
-  color: var(--color-dorado);
-  flex-shrink: 0;
-}
-
-.info-texto h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3em;
-  color: var(--color-cafe);
-  margin-bottom: 8px;
-}
-
-.info-texto p {
-  margin-bottom: 5px;
-  line-height: 1.5;
-  color: var(--color-texto);
-}
-
-/* Footer */
+/* Footer simple */
 .footer {
   background: linear-gradient(135deg, var(--color-cafe), var(--color-dorado));
   color: var(--color-blanco);
-  padding: 40px 30px;
+  padding: 25px;
   text-align: center;
   position: relative;
   z-index: 2;
 }
 
-.footer::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  background-image: url('flores-izquierda.png');
-  background-position: left center;
-  background-repeat: repeat-y;
-  background-size: 750px auto;
-  opacity: 0.1;
-  z-index: -1;
-  pointer-events: none;
-}
-
-.mensaje-final {
-  margin-bottom: 30px;
-}
-
-.mensaje-final p {
-  font-size: clamp(1.2em, 4vw, 1.5em);
-  margin-bottom: 10px;
+.firma-discreta {
   font-family: 'Playfair Display', serif;
-}
-
-.firma {
-  font-size: clamp(1.5em, 5vw, 2em) !important;
-  font-weight: 600;
+  font-size: clamp(1.1em, 3vw, 1.3em);
+  font-weight: 400;
   letter-spacing: 1px;
+  margin-bottom: 15px;
+  opacity: 0.9;
+  text-transform: lowercase;
 }
 
 .detalles-finales p {
-  margin-bottom: 10px;
-  opacity: 0.9;
+  margin-bottom: 8px;
+  opacity: 0.8;
+  font-size: clamp(0.9em, 2.5vw, 1em);
 }
 
 .agradecimiento {
-  font-size: clamp(1em, 3vw, 1.2em);
+  font-size: clamp(0.95em, 2.5vw, 1.1em);
   font-style: italic;
-  margin-top: 20px;
-  opacity: 0.8;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  body {
-    padding: 10px;
-    background-size: 500px auto;
-  }
-  
-  .contenedor-itinerario {
-    border-radius: 15px;
-  }
-  
-  .header, .mensaje-bienvenida, .itinerario-principal,
-  .seccion-fotos, .info-basica, .footer {
-    padding: 25px 20px;
-  }
-  
-  .evento {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    text-align: center;
-  }
-  
-  .evento-tiempo {
-    flex-direction: row;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  .evento-icono {
-    display: none;
-  }
-  
-  .evento-lugar {
-    justify-content: center;
-  }
-  
-  .info-basica {
-    grid-template-columns: 1fr;
-  }
+  margin-top: 10px;
+  opacity: 0.9;
 }
 
 /* Animación para los eventos */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -504,7 +358,8 @@ body::before {
 }
 
 .evento {
-  animation: fadeInUp 0.5s ease forwards;
+  animation: fadeInUp 0.4s ease forwards;
+  opacity: 0;
 }
 
 .evento:nth-child(1) { animation-delay: 0.1s; }
@@ -512,3 +367,61 @@ body::before {
 .evento:nth-child(3) { animation-delay: 0.3s; }
 .evento:nth-child(4) { animation-delay: 0.4s; }
 .evento:nth-child(5) { animation-delay: 0.5s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  .contenedor-itinerario {
+    border-radius: 12px;
+    max-width: 100%;
+  }
+  
+  .header, .mensaje-bienvenida, .itinerario-principal,
+  .seccion-fotos, .footer {
+    padding: 20px 15px;
+  }
+  
+  .evento {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .evento-tiempo {
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .evento-lugar {
+    justify-content: center;
+  }
+  
+  .qr-code {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .qr-placeholder p {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenido-fotos {
+    text-align: center;
+  }
+  
+  .info-fotos {
+    text-align: center;
+  }
+  
+  .qr-container {
+    margin-top: 10px;
+  }
+}
