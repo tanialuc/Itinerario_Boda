@@ -1,106 +1,282 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Itinerario Boda - Tania y Manuel</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- 1. PRIMERO la librería QRCode - DEBE ESTAR EN EL HEAD -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum de Fotos - Boda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f2;
+            color: #5d5d5d;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 50px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #d4a576;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .intro-text {
+            font-size: 1.3rem;
+            color: #8c6d46;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .text-section {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+        
+        .text-section p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .highlight {
+            color: #d4a576;
+            font-weight: 500;
+        }
+        
+        .qr-section {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .qr-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .qr-code {
+            width: 220px;
+            height: 220px;
+            background: linear-gradient(135deg, #f9f3eb 0%, #f5e8d6 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin: 0 auto;
+        }
+        
+        .qr-code i {
+            font-size: 100px;
+            color: #d4a576;
+        }
+        
+        .scan-instruction {
+            font-size: 1.2rem;
+            color: #8c6d46;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+        
+        .main-button {
+            background-color: #d4a576;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 5px 15px rgba(212, 165, 118, 0.3);
+        }
+        
+        .main-button:hover {
+            background-color: #c89562;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 165, 118, 0.4);
+        }
+        
+        .or-text {
+            color: #aaa;
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+        
+        .share-note {
+            background-color: #f9f3eb;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #8c6d46;
+            border-left: 4px solid #d4a576;
+        }
+        
+        .share-note i {
+            margin-right: 10px;
+            color: #d4a576;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content {
+                flex-direction: column;
+            }
+            
+            .text-section {
+                text-align: center;
+            }
+        }
+        
+        .qr-label {
+            font-size: 1rem;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="invitacion">
-    <!-- Encabezado simple -->
-    <div class="header">
-      <h1 class="titulo-principal">Itinerario Boda T&M</h1>
-      <p class="fecha-boda">Sábado, 7 de Marzo 2026</p>
+    <div class="container">
+        <div class="card">
+            <h1>Comparte tus fotos</h1>
+            <p class="intro-text">Hoy todos somos parte de esta historia</p>
+            
+            <div class="content">
+                <div class="text-section">
+                    <p>Si capturas algún momento especial, te invitamos a subir tus fotos a nuestro álbum compartido.</p>
+                    <p>Queremos guardar recuerdos desde diferentes ángulos y miradas, esos detalles espontáneos que hacen único este día.</p>
+                    <p><span class="highlight">Sube las fotos que tomes durante la boda a nuestro álbum compartido de Google Photos</span></p>
+                </div>
+                
+                <div class="qr-section">
+                    <div class="qr-container">
+                        <div class="qr-code">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <p class="qr-label">Código QR del álbum</p>
+                    </div>
+                    
+                    <div class="button-container">
+                        <p class="scan-instruction">
+                            <i class="fas fa-mobile-alt"></i> Escanea el código QR o
+                        </p>
+                        
+                        <button class="main-button" id="openAlbumBtn">
+                            <i class="fab fa-google-drive"></i>
+                            Abrir álbum de fotos
+                        </button>
+                        
+                        <p class="or-text">o haz clic en el botón</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="share-note">
+                <i class="fas fa-info-circle"></i>
+                Si alguien no puede escanear el QR, compártelo para que también pueda participar.
+            </div>
+            
+            <div class="footer">
+                <p>Gracias por ayudarnos a capturar cada momento especial de este día inolvidable.</p>
+            </div>
+        </div>
     </div>
     
-    <div class="contenido">
-      <!-- Mensaje de bienvenida -->
-      <div class="mensaje-bienvenida">
-        <p>Queridos invitados,</p>
-        <p>Aquí encontrarán el itinerario de nuestro día especial. ¡Esperamos compartir cada momento con ustedes!</p>
-      </div>
-      
-      <!-- Itinerario principal -->
-      <div class="itinerario">
-        <h3 class="titulo-itinerario">Itinerario del Día</h3>
+    <script>
+        // Simular la acción del botón
+        document.getElementById('openAlbumBtn').addEventListener('click', function() {
+            alert('Redirigiendo al álbum compartido de Google Photos...\n\n(En una implementación real, esto abriría el enlace al álbum)');
+            
+            // En un caso real, aquí iría:
+            // window.open('https://photos.google.com/album/...', '_blank');
+        });
         
-        <div class="evento">
-          <span class="hora">10:40 AM</span>
-          <span class="actividad">Toma tu lugar - Recepción de invitados.</span>
-        </div>
-        
-        <div class="evento">
-          <span class="hora">11:00 AM</span>
-          <span class="actividad">Ceremonia - Civil y simbólica.</span>
-        </div>
-        
-        <div class="evento">
-          <span class="hora">12:00 PM</span>
-          <span class="actividad">Sesión de Fotos - Recuerdos para la eternidad.</span>
-        </div>
-        
-        <div class="evento">
-          <span class="hora">1:00 PM</span>
-          <span class="actividad">Almuerzo - Banquete de celebración.</span>
-        </div>
-        
-        <div class="evento">
-          <span class="hora">3:00 PM</span>
-          <span class="actividad">De la mesa al agua: compartamos un momento de relax en las termales.</span>
-        </div>
-      </div>
-      
-      <!-- Sección de Google Photos - NUEVO DISEÑO -->
-      <div class="seccion-fotos">
-        <h3>Comparte tus fotos</h3>
-        
-        <div class="texto-invitacion">
-          <p><strong>Hoy todos somos parte de esta historia.</strong></p>
-          <p>Si capturas algún momento especial, te invitamos a subir tus fotos a nuestro álbum compartido.</p>
-          <p>Queremos guardar recuerdos desde diferentes ángulos y miradas, esos detalles espontáneos que hacen único este día.</p>
-          <p>Si alguien no puede escanear el QR, compártelo para que también pueda participar.</p>
-        </div>
-        
-        <div class="contenedor-qr-boton">
-          <!-- Contenedor del QR -->
-          <div class="qr-contenedor">
-            <div class="qr-code" id="qr-code">
-              <!-- El código QR se generará con JavaScript -->
-            </div>
-            <p class="qr-text">Escanea el código QR</p>
-          </div>
-          
-          <!-- Línea divisoria -->
-          <div class="divisor"></div>
-          
-          <!-- Botón alternativo -->
-          <div class="boton-alternativo">
-            <p class="texto-boton">Si prefieres el enlace directo:</p>
-            <a href="https://photos.app.goo.gl/e2M2xJxB722fqru97" target="_blank" class="btn-fotos">
-              <span class="icono-link">📸</span>
-              Abrir álbum de fotos
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Footer simple -->
-      <div class="footer-simple">
-        <div class="firma-discreta">Tania & Manuel</div>
-        <div class="detalles-finales">
-          <p class="agradecimiento">¡Gracias por ser parte de nuestro día especial!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2. LUEGO tu script personalizado - AL FINAL DEL BODY -->
-  <script src="script.js"></script>
+        // Efecto de parpadeo sutil en el QR para llamar la atención
+        const qrCode = document.querySelector('.qr-code');
+        setInterval(() => {
+            qrCode.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                qrCode.style.transform = 'scale(1)';
+            }, 300);
+        }, 3000);
+    </script>
 </body>
 </html>
