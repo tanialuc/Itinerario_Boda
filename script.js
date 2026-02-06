@@ -21,14 +21,26 @@ function generarQR() {
       // Mostrar placeholder en caso de error
       qrContainer.innerHTML = `
         <div class="qr-placeholder">
-          <p>Haz clic para acceder al álbum</p>
+          <p>Acceder al álbum</p>
         </div>
       `;
+      
+      // Hacer que el placeholder sea clickeable
+      const placeholder = qrContainer.querySelector('.qr-placeholder');
+      placeholder.style.cursor = 'pointer';
+      placeholder.addEventListener('click', function() {
+        window.open(urlGooglePhotos, '_blank');
+      });
     } else {
       // Agregar estilos al canvas generado
       const canvas = qrContainer.querySelector('canvas');
       if (canvas) {
         canvas.style.borderRadius = '6px';
+        // Hacer el QR clickeable
+        canvas.style.cursor = 'pointer';
+        canvas.addEventListener('click', function() {
+          window.open(urlGooglePhotos, '_blank');
+        });
       }
     }
   });
@@ -41,34 +53,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // Generar el código QR
   generarQR();
   
-  // Agregar efectos de hover a los eventos
-  const eventos = document.querySelectorAll('.evento');
-  eventos.forEach(evento => {
-    // Efecto de sombra al pasar el mouse
-    evento.addEventListener('mouseenter', function() {
-      this.style.boxShadow = '0 12px 25px rgba(139, 69, 19, 0.12)';
+  // Hacer el botón de fotos más interactivo
+  const btnFotos = document.querySelector('.btn-fotos');
+  if (btnFotos) {
+    btnFotos.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-2px)';
     });
     
-    evento.addEventListener('mouseleave', function() {
-      this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+    btnFotos.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
     });
-  });
-  
-  // Agregar funcionalidad para abrir enlace al hacer clic en QR
-  const qrCode = document.getElementById('qr-code');
-  if (qrCode) {
-    qrCode.addEventListener('click', function() {
-      const canvas = this.querySelector('canvas');
-      if (canvas) {
-        // Si hay QR, abrir el enlace
-        window.open('https://photos.app.goo.gl/e2M2xJxB722fqru97', '_blank');
-      } else {
-        // Si no hay QR (placeholder), también abrir
-        window.open('https://photos.app.goo.gl/e2M2xJxB722fqru97', '_blank');
-      }
-    });
-    
-    // Cambiar cursor
-    qrCode.style.cursor = 'pointer';
   }
 });
