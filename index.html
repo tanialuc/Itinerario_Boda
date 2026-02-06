@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tania y Manuel - Itinerario de Boda</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="contenedor-itinerario">
+    <!-- Encabezado -->
+    <div class="header">
+      <h1 class="nombres-novios">Tania & Manuel</h1>
+      <p class="subtitulo">Itinerario del Día de la Boda</p>
+      <p class="fecha-principal">Sábado, 7 de Marzo 2026</p>
+    </div>
+    
+    <!-- Contador regresivo -->
+    <div class="contador-container">
+      <div id="contador-dias">
+        <div class="contador-item">
+          <span class="contador-numero" id="dias">--</span>
+          <span class="contador-etiqueta">Días</span>
+        </div>
+        <div class="contador-separador">:</div>
+        <div class="contador-item">
+          <span class="contador-numero" id="horas">--</span>
+          <span class="contador-etiqueta">Horas</span>
+        </div>
+        <div class="contador-separador">:</div>
+        <div class="contador-item">
+          <span class="contador-numero" id="minutos">--</span>
+          <span class="contador-etiqueta">Minutos</span>
+        </div>
+        <div class="contador-separador">:</div>
+        <div class="contador-item">
+          <span class="contador-numero" id="segundos">--</span>
+          <span class="contador-etiqueta">Segundos</span>
+        </div>
+      </div>
+      <p class="contador-mensaje">Hasta nuestro gran día</p>
+    </div>
+    
+    <!-- Mapa del día -->
+    <div class="mapa-dia">
+      <h2 class="titulo-seccion">Mapa del Día</h2>
+      <div class="linea-tiempo">
+        
+        <div class="evento-destacado">
+          <div class="evento-hora">10:40 AM</div>
+          <div class="evento-punto"></div>
+          <div class="evento-detalle">
+            <h3>Recepción de Invitados</h3>
+            <p>Toma tu lugar en la ceremonia</p>
+            <div class="evento-icono">👥</div>
+          </div>
+        </div>
+        
+        <div class="evento-destacado">
+          <div class="evento-hora">11:00 AM</div>
+          <div class="evento-punto"></div>
+          <div class="evento-detalle">
+            <h3>Ceremonia</h3>
+            <p>Civil y simbólica en los jardines</p>
+            <div class="evento-icono">💒</div>
+          </div>
+        </div>
+        
+        <div class="evento-destacado">
+          <div class="evento-hora">12:00 PM</div>
+          <div class="evento-punto"></div>
+          <div class="evento-detalle">
+            <h3>Sesión de Fotos</h3>
+            <p>Recuerdos para la eternidad</p>
+            <div class="evento-icono">📸</div>
+          </div>
+        </div>
+        
+        <div class="evento-destacado">
+          <div class="evento-hora">1:00 PM</div>
+          <div class="evento-punto"></div>
+          <div class="evento-detalle">
+            <h3>Almuerzo de Celebración</h3>
+            <p>Banquete especial para todos</p>
+            <div class="evento-icono">🍽️</div>
+          </div>
+        </div>
+        
+        <div class="evento-destacado">
+          <div class="evento-hora">3:00 PM</div>
+          <div class="evento-punto"></div>
+          <div class="evento-detalle">
+            <h3>Momento Relax</h3>
+            <p>Compartamos en las termales</p>
+            <div class="evento-icono">💦</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Detalles por evento -->
+    <div class="detalles-container">
+      <h2 class="titulo-seccion">Detalles de Cada Evento</h2>
+      
+      <div class="detalle-evento">
+        <div class="detalle-header" style="background: linear-gradient(135deg, #8B4513, #b48e5c);">
+          <h3>📝 Ceremonia</h3>
+          <span class="detalle-hora">11:00 AM</span>
+        </div>
+        <div class="detalle-contenido">
+          <p><strong>Lugar:</strong> Jardines del Hotel Los Lagos Spa & Resort</p>
+          <p><strong>Duración:</strong> Aproximadamente 45 minutos</p>
+          <p><strong>Nota:</strong> Ceremonia civil seguida de una ceremonia simbólica personalizada</p>
+        </div>
+      </div>
+      
+      <div class="detalle-evento">
+        <div class="detalle-header" style="background: linear-gradient(135deg, #b48e5c, #8B4513);">
+          <h3>📸 Sesión de Fotos</h3>
+          <span class="detalle-hora">12:00 PM</span>
+        </div>
+        <div class="detalle-contenido">
+          <p><strong>Lugar:</strong> Diferentes locaciones del resort</p>
+          <p><strong>Duración:</strong> 1 hora aproximadamente</p>
+          <p><strong>Nota:</strong> Los novios tomarán fotos formales, los invitados pueden disfrutar de un cóctel de bienvenida</p>
+        </div>
+      </div>
+      
+      <div class="detalle-evento">
+        <div class="detalle-header" style="background: linear-gradient(135deg, #8B4513, #b48e5c);">
+          <h3>🍽️ Almuerzo</h3>
+          <span class="detalle-hora">1:00 PM</span>
+        </div>
+        <div class="detalle-contenido">
+          <p><strong>Lugar:</strong> Salón principal del resort</p>
+          <p><strong>Duración:</strong> 2 horas aproximadamente</p>
+          <p><strong>Menú:</strong> Opción vegetariana y no vegetariana disponible</p>
+          <p><strong>Nota:</strong> Brindis y discursos durante el almuerzo</p>
+        </div>
+      </div>
+      
+      <div class="detalle-evento">
+        <div class="detalle-header" style="background: linear-gradient(135deg, #b48e5c, #8B4513);">
+          <h3>💦 Termales</h3>
+          <span class="detalle-hora">3:00 PM</span>
+        </div>
+        <div class="detalle-contenido">
+          <p><strong>Lugar:</strong> Aguas termales del resort</p>
+          <p><strong>Duración:</strong> Hasta las 6:00 PM</p>
+          <p><strong>Incluye:</strong> Acceso a todas las piscinas termales</p>
+          <p><strong>Recomendación:</strong> Traer traje de baño y toalla</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Información importante -->
+    <div class="info-container">
+      <h2 class="titulo-seccion">Información Importante</h2>
+      
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icono">📍</div>
+          <h3>Ubicación</h3>
+          <p><strong>Hotel Los Lagos Spa & Resort</strong></p>
+          <p>La Fortuna de San Carlos, Costa Rica</p>
+          <a href="https://waze.com/ul/hd1gg8vm7y" target="_blank" class="btn-waze">
+            Abrir en Waze
+          </a>
+        </div>
+        
+        <div class="info-card">
+          <div class="info-icono">👗</div>
+          <h3>Vestimenta</h3>
+          <p><strong>Formal Tropical</strong></p>
+          <p>Inspirado en nuestra paleta de colores</p>
+          <div class="paleta-mini">
+            <div class="color-muestra" style="background: #b48e5c;"></div>
+            <div class="color-muestra" style="background: #8B4513;"></div>
+            <div class="color-muestra" style="background: #fdf8f5;"></div>
+            <div class="color-muestra" style="background: #333333;"></div>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <div class="info-icono">⏰</div>
+          <h3>Puntualidad</h3>
+          <p>Por favor llegar 20 minutos antes de cada evento</p>
+          <p>El transporte entre áreas del resort será proporcionado</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="info-icono">📱</div>
+          <h3>Contacto</h3>
+          <p><strong>Tania:</strong> 7295-7888</p>
+          <p><strong>Manuel:</strong> 8951-1422</p>
+          <p>Cualquier duda, no dudes en llamarnos</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      <p>Con amor, Tania y Manuel</p>
+      <p class="footer-sub">¡Gracias por ser parte de nuestro día especial!</p>
+      <div class="fecha-final">
+        7 de Marzo, 2026 · Hotel Los Lagos Spa & Resort
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
