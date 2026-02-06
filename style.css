@@ -132,77 +132,61 @@ body {
   font-weight: 500;
 }
 
-/* ESTILOS PARA EVENTOS DETALLADOS */
-.evento-detallado {
-  display: flex;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(180, 142, 92, 0.2);
+/* ESTILOS UNIFICADOS PARA TODOS LOS EVENTOS */
+.evento-unificado {
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 8px;
-  margin: 8px 0;
-  padding: 18px 15px;
+  margin: 10px 0;
+  padding: 18px 20px;
   transition: all 0.3s ease;
-  align-items: flex-start;
+  border-left: 3px solid var(--color-dorado);
 }
 
-.evento-detallado:hover {
+.evento-unificado:hover {
   background-color: rgba(255, 255, 255, 0.95);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.evento-detallado:last-child {
-  border-bottom: none;
+/* Contenedor de hora y título EN UNA MISMA LÍNEA */
+.encabezado-evento {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.hora-contenedor {
-  min-width: 90px;
-  padding-right: 20px;
-  position: relative;
-}
-
-.hora-contenedor::after {
-  content: '';
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  height: 90%;
-  width: 2px;
-  background: linear-gradient(to bottom, transparent, var(--color-dorado), transparent);
-}
-
-.hora {
+.hora-evento {
   font-weight: 700;
-  color: var(--color-cafe);
-  font-size: clamp(1em, 4vw, 1.15em);
-  display: block;
-  text-align: center;
-  background: rgba(180, 142, 92, 0.1);
-  padding: 6px 10px;
+  color: var(--color-blanco);
+  font-size: clamp(1em, 4vw, 1.1em);
+  background: linear-gradient(135deg, var(--color-cafe), var(--color-dorado));
+  padding: 6px 14px;
   border-radius: 6px;
-  border: 1px solid rgba(180, 142, 92, 0.2);
+  min-width: 95px;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(139, 69, 19, 0.2);
 }
 
-.actividad-contenedor {
-  flex-grow: 1;
-  padding-left: 10px;
-}
-
-.actividad-titulo {
+.titulo-evento {
   font-weight: 600;
   color: var(--color-cafe);
-  font-size: clamp(1em, 4vw, 1.1em);
-  display: block;
-  margin-bottom: 5px;
+  font-size: clamp(1.05em, 4vw, 1.2em);
   font-family: 'Playfair Display', serif;
+  margin: 0;
 }
 
-.actividad-descripcion {
-  font-size: clamp(0.9em, 3.5vw, 1em);
+/* Descripción del evento */
+.descripcion-evento {
+  font-size: clamp(0.95em, 3.5vw, 1.05em);
   line-height: 1.5;
   color: var(--color-texto);
   opacity: 0.9;
-  display: block;
+  padding-left: 8px;
+  border-left: 2px solid rgba(180, 142, 92, 0.3);
+  margin-left: 8px;
 }
 
 /* Footer simple - CORREGIDO (eliminado text-transform: lowercase) */
@@ -225,7 +209,6 @@ body {
   letter-spacing: 1px;
   margin-bottom: 10px;
   opacity: 0.9;
-  /* LINEA ELIMINADA: text-transform: lowercase; */
   color: var(--color-cafe);
 }
 
@@ -398,31 +381,24 @@ body {
     padding: 20px;
   }
   
-  /* Responsive para eventos detallados */
-  .evento-detallado {
-    flex-direction: column;
-    padding: 15px;
+  /* Responsive para eventos unificados */
+  .encabezado-evento {
+    gap: 10px;
   }
   
-  .hora-contenedor {
-    min-width: auto;
-    padding-right: 0;
-    margin-bottom: 10px;
-    width: 100%;
+  .hora-evento {
+    min-width: 85px;
+    padding: 5px 10px;
+    font-size: 0.95em;
   }
   
-  .hora-contenedor::after {
-    display: none;
+  .titulo-evento {
+    font-size: 1.1em;
   }
   
-  .hora {
-    display: inline-block;
-    text-align: left;
-    padding: 8px 15px;
-  }
-  
-  .actividad-contenedor {
-    padding-left: 0;
+  .descripcion-evento {
+    margin-left: 5px;
+    padding-left: 10px;
   }
   
   /* Sección fotos responsive */
@@ -441,6 +417,23 @@ body {
   }
 }
 
+@media (max-width: 600px) {
+  .encabezado-evento {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .hora-evento {
+    align-self: flex-start;
+  }
+  
+  .descripcion-evento {
+    margin-left: 0;
+    padding-left: 10px;
+  }
+}
+
 @media (max-width: 480px) {
   .invitacion::before {
     background-size: 600px auto;
@@ -456,11 +449,16 @@ body {
     padding: 12px;
   }
   
-  .evento-detallado {
-    padding: 12px;
+  .evento-unificado {
+    padding: 15px;
   }
   
-  .actividad-descripcion {
+  .descripcion-evento {
     font-size: 0.95em;
+  }
+  
+  .hora-evento {
+    font-size: 0.9em;
+    min-width: 80px;
   }
 }
