@@ -1,35 +1,64 @@
-// script.js - VERSIÓN CORREGIDA CON LIBRERÍA CONFIABLE
+// script.js - VERSIÓN MEJORADA CON VERIFICACIÓN DE CARGA
 
 // URL del álbum de Google Photos
 const GOOGLE_PHOTOS_URL = "https://photos.app.goo.gl/e2M2xJxB722fqru97";
 
-// Función principal para generar el QR - IGUAL QUE EN TU TARJETA
+// Variable para verificar si ya se generó el QR
+let qrGenerado = false;
+
+// Función para verificar si la librería QRCode está cargada
+function verificarLibreriaQR() {
+    if (typeof QRCode === 'undefined') {
+        console.log("⏳ QRCode.js no está cargada todavía...");
+        return false;
+    }
+    console.log("✅ QRCode.js cargada correctamente");
+    return true;
+}
+
+// Función principal para generar el QR
 function generarQRFuncional() {
+    if (qrGenerado) {
+        console.log("ℹ️ QR ya fue generado anteriormente");
+        return;
+    }
+
     const qrContainer = document.getElementById('qr-code');
-    if (!qrContainer) return;
+    if (!qrContainer) {
+        console.error("❌ No se encontró el contenedor #qr-code");
+        return;
+    }
 
-    // Limpiar completamente el contenedor
-    qrContainer.innerHTML = '';
-
-    // Crear un div interno para el QR (como en tu tarjeta)
-    const qrInner = document.createElement('div');
-    qrInner.id = 'qrcode-inner';
-    qrContainer.appendChild(qrInner);
+    // Verificar que la librería esté disponible
+    if (!verificarLibreriaQR()) {
+        console.log("🔄 Esperando a que cargue la librería...");
+        setTimeout(generarQRFuncional, 500);
+        return;
+    }
 
     try {
-        // USAR EXACTAMENTE EL MISMO MÉTODO QUE EN TU TARJETA
+        // Limpiar completamente el contenedor
+        qrContainer.innerHTML = '';
+
+        // Crear un div interno para el QR
+        const qrInner = document.createElement('div');
+        qrInner.id = 'qrcode-inner';
+        qrContainer.appendChild(qrInner);
+
+        // Generar el QR usando la misma librería que funciona
         new QRCode(qrInner, {
             text: GOOGLE_PHOTOS_URL,
             width: 170,
             height: 170,
-            colorDark: "#8B4513",      // Color café de tu paleta
-            colorLight: "#fdf8f5",     // Color beige de tu paleta
+            colorDark: "#8B4513",
+            colorLight: "#fdf8f5",
             correctLevel: QRCode.CorrectLevel.H
         });
 
-        console.log("✅ QR generado exitosamente con QRCode.js");
+        console.log("✅ QR generado exitosamente");
+        qrGenerado = true;
 
-        // Hacer el QR clickeable (como extra)
+        // Hacer el QR clickeable
         const canvas = qrInner.querySelector('canvas');
         if (canvas) {
             canvas.style.cursor = 'pointer';
@@ -47,40 +76,35 @@ function generarQRFuncional() {
     }
 }
 
-// Fallback simple si algo sale mal
+// Fallback que se muestra SOLO si falla el QR
 function mostrarFallbackSeguro() {
     const qrContainer = document.getElementById('qr-code');
     if (!qrContainer) return;
     
     qrContainer.innerHTML = `
-        <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, #f8f5f0, #f0ece5); border-radius: 8px; border: 2px dashed var(--color-dorado); padding: 15px; text-align: center;">
-            <a href="${GOOGLE_PHOTOS_URL}" 
-               target="_blank"
-               style="text-decoration: none; color: var(--color-cafe); display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                <span style="font-size: 2em;">📸</span>
-                <span style="font-weight: 600; font-size: 0.95em;">
-                    Haz clic aquí para<br>acceder al álbum
-                </span>
-            </a>
+        <div onclick="window.open('${GOOGLE_PHOTOS_URL}', '_blank')"
+             style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, #f8f5f0, #f0ece5); border-radius: 8px; border: 2px dashed var(--color-dorado); padding: 15px; text-align: center; cursor: pointer;">
+            <span style="font-size: 2em; color: var(--color-cafe);">📸</span>
+            <span style="font-weight: 600; font-size: 0.95em; color: var(--color-cafe); margin-top: 10px;">
+                Haz clic aquí para<br>acceder al álbum
+            </span>
         </div>
     `;
 }
 
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Inicializando itinerario de boda...');
+// Inicializar cuando TODO esté listo
+function inicializarAplicacion() {
+    console.log('🚀 Inicializando aplicación...');
 
-    // 1. Generar el QR FUNCIONAL
+    // Intentar generar el QR inmediatamente
     generarQRFuncional();
 
-    // 2. Configurar botón de fotos
+    // Configurar botón de fotos
     const btnFotos = document.querySelector('.btn-fotos');
     if (btnFotos) {
-        // Asegurar que el enlace sea correcto
         btnFotos.href = GOOGLE_PHOTOS_URL;
         btnFotos.target = "_blank";
         
-        // Efectos hover
         btnFotos.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-2px)';
         });
@@ -90,30 +114,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 3. Verificar después de 1 segundo
+    // Intentar de nuevo después de 2 segundos por si acaso
     setTimeout(function() {
-        const qrContainer = document.getElementById('qr-code');
-        if (qrContainer) {
-            const tieneCanvas = qrContainer.querySelector('canvas');
-            if (!tieneCanvas) {
-                console.log("🔄 QR no se generó, intentando de nuevo...");
-                generarQRFuncional();
-            } else {
-                console.log("✅ QR verificado y listo para escanear");
-            }
+        if (!qrGenerado) {
+            console.log("🔄 Reintentando generar QR...");
+            generarQRFuncional();
         }
-    }, 1000);
+    }, 2000);
+}
+
+// ESPERAR A QUE TODO EL DOM Y LAS LIBRERÍAS ESTÉN CARGADAS
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📄 DOM cargado');
+    
+    // Esperar un poco más para asegurar que las librerías carguen
+    setTimeout(inicializarAplicacion, 100);
 });
 
-// Función para probar el QR (opcional)
-function probarQR() {
-    const qrContainer = document.getElementById('qr-code');
-    if (qrContainer) {
-        const canvas = qrContainer.querySelector('canvas');
-        if (canvas) {
-            alert("✅ QR está listo. Puedes escanearlo con tu cámara.");
-        } else {
-            alert("❌ QR no se generó correctamente.");
-        }
+// También escuchar cuando todas las librerías se carguen
+window.addEventListener('load', function() {
+    console.log('🎯 Todos los recursos cargados');
+    
+    if (!qrGenerado) {
+        console.log("🎯 Generando QR después de carga completa...");
+        generarQRFuncional();
     }
+});
+
+// Función para forzar regeneración del QR (útil para debug)
+function regenerarQR() {
+    qrGenerado = false;
+    generarQRFuncional();
+    alert("QR regenerado. Refresca la página para verlo.");
 }
