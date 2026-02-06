@@ -22,7 +22,7 @@ body {
   justify-content: center;
 }
 
-/* Contenedor principal CON FONDO CORRECTO */
+/* Contenedor principal */
 .invitacion {
   max-width: 800px;
   width: 100%;
@@ -34,7 +34,7 @@ body {
   position: relative;
 }
 
-/* IMAGEN DE FONDO - SOLO DETRÁS, MUY CLARA, COMO WATERMARK */
+/* IMAGEN DE FONDO - MÁS GRANDE Y MEJOR POSICIONADA */
 .invitacion::before {
   content: "";
   position: absolute;
@@ -45,9 +45,9 @@ body {
   background-image: url('flores-izquierda.png');
   background-position: left center;
   background-repeat: repeat-y;
-  background-size: 750px auto;
-  opacity: 0.1; /* MUY TRANSPARENTE - SOLO COMO FONDO SUTIL */
-  z-index: 0; /* DETRÁS DE TODO EL CONTENIDO */
+  background-size: 850px auto; /* MÁS GRANDE PARA QUE NO SE CORTE */
+  opacity: 0.12; /* UN POCO MÁS VISIBLE */
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -58,7 +58,7 @@ body {
   padding: 30px 20px;
   text-align: center;
   position: relative;
-  z-index: 2; /* ENCIMA DEL FONDO */
+  z-index: 2;
 }
 
 .titulo-principal {
@@ -81,7 +81,7 @@ body {
 .contenido {
   padding: 25px 20px;
   position: relative;
-  z-index: 2; /* ENCIMA DEL FONDO */
+  z-index: 2;
 }
 
 /* Mensaje de bienvenida */
@@ -96,7 +96,7 @@ body {
   z-index: 2;
   font-style: italic;
   letter-spacing: 0.3px;
-  background-color: rgba(255, 255, 255, 0.9); /* FONDO BLANCO SEMITRANSPARENTE */
+  background-color: rgba(255, 255, 255, 0.85);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.05);
@@ -118,7 +118,7 @@ body {
   border-radius: 12px;
   margin: 20px 0;
   position: relative;
-  z-index: 2; /* ENCIMA DEL FONDO */
+  z-index: 2;
   border-left: 4px solid var(--color-dorado);
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
@@ -138,7 +138,7 @@ body {
   align-items: center;
   padding: 12px 0;
   border-bottom: 1px solid #e0e0e0;
-  background-color: rgba(255, 255, 255, 0.7); /* FONDO SEMITRANSPARENTE */
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 6px;
   margin: 2px 0;
   padding: 12px 15px;
@@ -167,7 +167,7 @@ body {
   line-height: 1.4;
 }
 
-/* Sección de Google Photos */
+/* Sección de Google Photos - CORREGIDA PARA QUE EL QR SEA VISIBLE */
 .seccion-fotos {
   background: linear-gradient(135deg, #f8f5f0, #f0ece5);
   padding: 25px 20px;
@@ -176,7 +176,7 @@ body {
   text-align: center;
   border-left: 4px solid var(--color-dorado);
   position: relative;
-  z-index: 2; /* ENCIMA DEL FONDO */
+  z-index: 2;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
@@ -199,7 +199,7 @@ body {
 
 .info-fotos {
   flex: 1;
-  background-color: rgba(255, 255, 255, 0.8); /* FONDO SEMITRANSPARENTE */
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 8px;
 }
@@ -242,26 +242,28 @@ body {
   box-shadow: 0 6px 12px rgba(139, 69, 19, 0.3);
 }
 
+/* QR CONTAINER - VISIBLE */
 .qr-container {
   text-align: center;
   flex-shrink: 0;
-  background-color: rgba(255, 255, 255, 0.8); /* FONDO SEMITRANSPARENTE */
+  background-color: rgba(255, 255, 255, 0.9); /* MÁS OPACO PARA MEJOR VISIBILIDAD */
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .qr-code {
-  width: 180px;
-  height: 180px;
+  width: 200px; /* UN POCO MÁS GRANDE */
+  height: 200px;
   background: var(--color-blanco);
   border-radius: 10px;
   padding: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin: 0 auto 15px auto;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border: 2px solid var(--color-dorado);
 }
 
 .qr-placeholder {
@@ -280,13 +282,14 @@ body {
   font-weight: 600;
   text-align: center;
   padding: 20px;
-  font-size: 0.9em;
+  font-size: 0.95em;
 }
 
 .qr-text {
-  font-size: 0.9em;
+  font-size: 0.95em;
   color: var(--color-texto);
   font-weight: 600;
+  margin-top: 10px;
 }
 
 /* Footer simple */
@@ -297,7 +300,7 @@ body {
   border-top: 1px solid rgba(180, 142, 92, 0.2);
   position: relative;
   z-index: 2;
-  background-color: rgba(255, 255, 255, 0.9); /* FONDO SEMITRANSPARENTE */
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 8px;
 }
@@ -336,6 +339,10 @@ body {
     border-radius: 12px;
   }
   
+  .invitacion::before {
+    background-size: 700px auto; /* AJUSTE PARA MÓVIL */
+  }
+  
   .header, .contenido {
     padding: 20px 15px;
   }
@@ -360,13 +367,13 @@ body {
   }
   
   .qr-code {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
   
   .qr-placeholder p {
     padding: 15px;
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
   
   .contenido-fotos {
@@ -375,7 +382,16 @@ body {
 }
 
 @media (max-width: 480px) {
+  .invitacion::before {
+    background-size: 600px auto; /* AJUSTE PARA PANTALLAS PEQUEÑAS */
+  }
+  
   .info-fotos {
     text-align: center;
+  }
+  
+  .qr-code {
+    width: 160px;
+    height: 160px;
   }
 }
